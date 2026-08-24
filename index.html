@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#0a0f1e">
+<meta name="theme-color" content="#191637">
 <meta name="mobile-web-app-capable" content="true">
 <meta name="apple-mobile-web-app-capable" content="true">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,15 +15,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #05080f;
-    --surface: #0d1220;
-    --surface2: #131926;
+    --bg: #14122E;
+    --surface: #1E1B45;
+    --surface2: #292456;
     --border: rgba(255,255,255,0.07);
-    --accent: #4f8eff;
-    --accent2: #ff6b4a;
-    --accent3: #3dffc0;
-    --text: #e8edf5;
-    --muted: #6b7794;
+    --accent: #22C55E;
+    --accent2: #FF7A5C;
+    --accent3: #2DD9B9;
+    --text: #F4F2FF;
+    --muted: #9994BE;
     --card-h: 160px;
   }
 
@@ -48,12 +48,24 @@
   /* ── HEADER ── */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(5,8,15,0.85);
+    background: rgba(20,18,46,0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 20px;
     height: 60px;
     display: flex; align-items: center; justify-content: space-between;
+  }
+
+  /* Aurora glow — signature touch behind the top of the page */
+  .aurora {
+    position: fixed; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 480px; height: 280px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(34,197,94,.32), transparent 60%),
+      radial-gradient(circle at 70% 40%, rgba(45,217,185,.25), transparent 60%),
+      radial-gradient(circle at 50% 70%, rgba(255,200,87,.20), transparent 60%);
+    filter: blur(40px);
+    pointer-events: none; z-index: 0;
   }
 
   .logo {
@@ -112,7 +124,7 @@
     font-family: 'Space Mono', monospace;
     font-size: .65rem; letter-spacing: 2px;
     color: var(--accent3);
-    border: 1px solid rgba(61,255,192,.2);
+    border: 1px solid rgba(45,217,185,.2);
     padding: 4px 12px; border-radius: 100px;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -175,19 +187,26 @@
 
   .class-card {
     position: relative; overflow: hidden;
-    border-radius: 16px;
+    border-radius: 22px;
     border: 1px solid var(--border);
-    background: var(--surface);
+    background: linear-gradient(155deg, var(--surface2) 0%, var(--surface) 65%);
     padding: 20px 16px;
     cursor: pointer;
     transition: transform .2s, border-color .2s, box-shadow .2s;
     min-height: var(--card-h);
     display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 8px 24px -12px rgba(0,0,0,.4);
+  }
+  .class-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--card-accent, var(--accent));
+    opacity: .85;
   }
   .class-card::before {
     content: '';
     position: absolute; inset: 0;
-    background: var(--card-glow, rgba(79,142,255,.06));
+    background: var(--card-glow, rgba(34,197,94,.06));
     opacity: 0; transition: opacity .3s;
   }
   .class-card:hover::before, .class-card:active::before { opacity: 1; }
@@ -235,10 +254,10 @@
   }
 
   /* color variants per cycle */
-  .card-college  { --card-accent:#4f8eff; --card-glow:rgba(79,142,255,.08); }
-  .card-seconde  { --card-accent:#ff6b4a; --card-glow:rgba(255,107,74,.08); }
-  .card-premiere { --card-accent:#a78bfa; --card-glow:rgba(167,139,250,.08); }
-  .card-terminale{ --card-accent:#3dffc0; --card-glow:rgba(61,255,192,.08); }
+  .card-college  { --card-accent:#4ADE80; --card-glow:rgba(74,222,128,.12); }
+  .card-seconde  { --card-accent:#A3E635; --card-glow:rgba(163,230,53,.10); }
+  .card-premiere { --card-accent:#2DD9B9; --card-glow:rgba(45,217,185,.10); }
+  .card-terminale{ --card-accent:#34D399; --card-glow:rgba(52,211,153,.10); }
 
   /* ── CONTENT TYPE SCREEN ── */
   .content-header {
@@ -291,7 +310,7 @@
 
   .type-icon {
     width: 48px; height: 48px; border-radius: 12px;
-    background: var(--type-bg, rgba(79,142,255,.1));
+    background: var(--type-bg, rgba(34,197,94,.1));
     display: flex; align-items: center; justify-content: center;
     font-size: 1.4rem; flex-shrink: 0;
   }
@@ -327,8 +346,8 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 1.1rem; flex-shrink: 0;
   }
-  .file-icon.pdf { background: rgba(255,107,74,.12); }
-  .file-icon.qcm { background: rgba(79,142,255,.12); }
+  .file-icon.pdf { background: rgba(255,122,92,.12); }
+  .file-icon.qcm { background: rgba(34,197,94,.12); }
 
   .file-info { flex: 1; min-width: 0; }
   .file-info h4 {
@@ -348,8 +367,8 @@
 
   /* ── QCM SCREEN ── */
   .qcm-header {
-    background: linear-gradient(135deg, rgba(79,142,255,.1), rgba(167,139,250,.1));
-    border: 1px solid rgba(79,142,255,.2);
+    background: linear-gradient(135deg, rgba(34,197,94,.1), rgba(21,128,61,.1));
+    border: 1px solid rgba(34,197,94,.2);
     border-radius: 14px;
     padding: 16px 18px;
     margin-bottom: 20px;
@@ -402,10 +421,10 @@
     transition: all .2s;
     display: flex; align-items: center; gap: 10px;
   }
-  .option:hover { border-color: var(--accent); background: rgba(79,142,255,.06); }
-  .option.selected { border-color: var(--accent); background: rgba(79,142,255,.12); color: var(--accent); }
-  .option.correct { border-color: var(--accent3); background: rgba(61,255,192,.1); color: var(--accent3); }
-  .option.wrong { border-color: var(--accent2); background: rgba(255,107,74,.1); color: var(--accent2); }
+  .option:hover { border-color: var(--accent); background: rgba(34,197,94,.06); }
+  .option.selected { border-color: var(--accent); background: rgba(34,197,94,.12); color: var(--accent); }
+  .option.correct { border-color: var(--accent3); background: rgba(45,217,185,.1); color: var(--accent3); }
+  .option.wrong { border-color: var(--accent2); background: rgba(255,122,92,.1); color: var(--accent2); }
   .option-letter {
     width: 22px; height: 22px; border-radius: 6px;
     background: rgba(255,255,255,.06);
@@ -470,13 +489,13 @@
   .drive-btn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%; padding: 11px 14px; margin-bottom: 10px;
-    border-radius: 10px; border: 1px solid rgba(79,142,255,.3);
-    background: rgba(79,142,255,.08);
+    border-radius: 10px; border: 1px solid rgba(34,197,94,.3);
+    background: rgba(34,197,94,.08);
     color: var(--accent); font-family: 'Syne', sans-serif;
     font-size: .82rem; font-weight: 700;
     cursor: pointer; transition: all .2s;
   }
-  .drive-btn:hover { background: rgba(79,142,255,.15); }
+  .drive-btn:hover { background: rgba(34,197,94,.15); }
   .drive-btn:disabled { opacity: .4; cursor: default; }
 
   /* ── ADMIN SCREEN ── */
@@ -532,14 +551,14 @@
     cursor: pointer; border: none;
     font-family: 'DM Sans', sans-serif;
   }
-  .btn-add { background: rgba(79,142,255,.15); color: var(--accent); }
+  .btn-add { background: rgba(34,197,94,.15); color: var(--accent); }
   .btn-edit { background: rgba(255,255,255,.07); color: var(--muted); }
 
   .admin-note {
     margin-top: 20px; padding: 14px 16px;
     border-radius: 10px;
-    background: rgba(61,255,192,.06);
-    border: 1px solid rgba(61,255,192,.15);
+    background: rgba(45,217,185,.06);
+    border: 1px solid rgba(45,217,185,.15);
     font-size: .75rem; line-height: 1.6;
     color: var(--muted);
   }
@@ -548,7 +567,7 @@
   /* ── NAV BAR ── */
   .bottom-nav {
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: rgba(5,8,15,0.92);
+    background: rgba(20,18,46,0.92);
     backdrop-filter: blur(20px);
     border-top: 1px solid var(--border);
     display: flex;
@@ -613,11 +632,11 @@
   .dl-btn:active { transform: scale(.93); }
   .dl-btn:hover  { background: var(--surface); }
   .dl-btn-green  {
-    border-color: rgba(61,255,192,.25);
-    background: rgba(61,255,192,.07);
+    border-color: rgba(45,217,185,.25);
+    background: rgba(45,217,185,.07);
     color: var(--accent3);
   }
-  .dl-btn-green:hover { background: rgba(61,255,192,.14); }
+  .dl-btn-green:hover { background: rgba(45,217,185,.14); }
   .app-footer {
     text-align: center;
     padding: 18px 20px calc(80px + env(safe-area-inset-bottom));
@@ -654,13 +673,13 @@
     padding: 2px 7px; border-radius: 4px;
     letter-spacing: .5px;
   }
-  .tag-new { background: rgba(61,255,192,.12); color: var(--accent3); }
-  .tag-update { background: rgba(79,142,255,.12); color: var(--accent); }
+  .tag-new { background: rgba(45,217,185,.12); color: var(--accent3); }
+  .tag-update { background: rgba(34,197,94,.12); color: var(--accent); }
 
   /* ── SEQ SUBMENU ── */
   .seq-submenu-inner {
     background: var(--surface);
-    border: 1px solid rgba(167,139,250,.25);
+    border: 1px solid rgba(21,128,61,.25);
     border-radius: 14px;
     margin: -4px 0 12px;
     overflow: hidden;
@@ -688,7 +707,7 @@
     font-size: .65rem; color: var(--muted);
   }
   .seq-item-td .seq-label { color: var(--accent3); }
-  .seq-item-td { background: rgba(61,255,192,.03); }
+  .seq-item-td { background: rgba(45,217,185,.03); }
 
   /* ── HERO AMÉLIORÉ ── */
   .hero-stats {
@@ -761,6 +780,8 @@
 </head>
 <body>
 
+<div class="aurora"></div>
+
 <header>
   <div class="logo">
     <div class="logo-dot"></div>
@@ -801,10 +822,10 @@
       </div>
     </div>
     <div class="hero-chips">
-      <div class="hero-chip"><div class="chip-dot" style="background:#4f8eff"></div>Collège</div>
-      <div class="hero-chip"><div class="chip-dot" style="background:#ff6b4a"></div>Seconde</div>
-      <div class="hero-chip"><div class="chip-dot" style="background:#a78bfa"></div>Première</div>
-      <div class="hero-chip"><div class="chip-dot" style="background:#3dffc0"></div>Terminale</div>
+      <div class="hero-chip"><div class="chip-dot" style="background:#22C55E"></div>Collège</div>
+      <div class="hero-chip"><div class="chip-dot" style="background:#FF7A5C"></div>Seconde</div>
+      <div class="hero-chip"><div class="chip-dot" style="background:#15803D"></div>Première</div>
+      <div class="hero-chip"><div class="chip-dot" style="background:#2DD9B9"></div>Terminale</div>
     </div>
   </div>
 
@@ -839,7 +860,7 @@
   </div>
 
   <div class="type-grid">
-    <div class="type-card" style="--type-color:#ff6b4a;--type-bg:rgba(255,107,74,.1)" onclick="openContent('cours')">
+    <div class="type-card" style="--type-color:#FF7A5C;--type-bg:rgba(255,122,92,.1)" onclick="openContent('cours')">
       <div class="type-icon">📄</div>
       <div class="type-info">
         <h3>Cours</h3>
@@ -849,7 +870,7 @@
     </div>
 
     <!-- EXERCICES — parent card avec sous-séquences -->
-    <div class="type-card type-card-expandable" style="--type-color:#a78bfa;--type-bg:rgba(167,139,250,.1)" id="card-exercices" onclick="toggleExercicesMenu()">
+    <div class="type-card type-card-expandable" style="--type-color:#15803D;--type-bg:rgba(21,128,61,.1)" id="card-exercices" onclick="toggleExercicesMenu()">
       <div class="type-icon">✏️</div>
       <div class="type-info">
         <h3>Exercices</h3>
@@ -865,37 +886,37 @@
     <div id="seq-submenu" style="display:none;grid-column:span 2">
       <div class="seq-submenu-inner">
         <div class="seq-item" onclick="openExoSeq('seq1')">
-          <div class="seq-dot" style="background:#a78bfa"></div>
+          <div class="seq-dot" style="background:#15803D"></div>
           <div class="seq-label">Séquence 1</div>
           <div class="seq-count" id="cnt-seq1">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
         </div>
         <div class="seq-item" onclick="openExoSeq('seq2')">
-          <div class="seq-dot" style="background:#c4b5fd"></div>
+          <div class="seq-dot" style="background:#B9AEFF"></div>
           <div class="seq-label">Séquence 2</div>
           <div class="seq-count" id="cnt-seq2">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
         </div>
         <div class="seq-item" onclick="openExoSeq('seq3')">
-          <div class="seq-dot" style="background:#ddd6fe"></div>
+          <div class="seq-dot" style="background:#C7BFFF"></div>
           <div class="seq-label">Séquence 3</div>
           <div class="seq-count" id="cnt-seq3">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
         </div>
         <div class="seq-item" onclick="openExoSeq('seq4')">
-          <div class="seq-dot" style="background:#ede9fe"></div>
+          <div class="seq-dot" style="background:#2A2560"></div>
           <div class="seq-label">Séquence 4</div>
           <div class="seq-count" id="cnt-seq4">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
         </div>
         <div class="seq-item" onclick="openExoSeq('seq5')">
-          <div class="seq-dot" style="background:#f5f3ff"></div>
+          <div class="seq-dot" style="background:#F4F2FF"></div>
           <div class="seq-label">Séquence 5</div>
           <div class="seq-count" id="cnt-seq5">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
         </div>
         <div class="seq-item seq-item-td" onclick="openExoSeq('td')">
-          <div class="seq-dot" style="background:#3dffc0"></div>
+          <div class="seq-dot" style="background:#2DD9B9"></div>
           <div class="seq-label">TD <span style="font-size:.65rem;color:var(--accent3)">(Travaux Dirigés)</span></div>
           <div class="seq-count" id="cnt-td">0 fich.</div>
           <span style="color:var(--muted);font-size:.75rem">→</span>
@@ -903,7 +924,7 @@
       </div>
     </div>
 
-    <div class="type-card" style="--type-color:#4f8eff;--type-bg:rgba(79,142,255,.1)" onclick="openContent('qcm')">
+    <div class="type-card" style="--type-color:#22C55E;--type-bg:rgba(34,197,94,.1)" onclick="openContent('qcm')">
       <div class="type-icon">🎯</div>
       <div class="type-info">
         <h3>QCM Interactifs</h3>
@@ -911,7 +932,7 @@
       </div>
       <div class="type-count" id="count-qcm">— quiz</div>
     </div>
-    <div class="type-card" style="--type-color:#3dffc0;--type-bg:rgba(61,255,192,.1)" onclick="openContent('corriges')">
+    <div class="type-card" style="--type-color:#2DD9B9;--type-bg:rgba(45,217,185,.1)" onclick="openContent('corriges')">
       <div class="type-icon">✅</div>
       <div class="type-info">
         <h3>Corrigés</h3>
@@ -1044,7 +1065,7 @@
     </p>
     <button type="button" class="drive-btn" id="cf-drive-btn" onclick="_openDriveBrowser(_fillContribBatchFromDrive)">📁 Choisir sur Google Drive</button>
     <div id="cf-batch-list"></div>
-    <button type="button" onclick="_cfAddBatchRow()" style="width:100%;padding:9px 14px;border-radius:9px;border:1px dashed rgba(79,142,255,.35);background:rgba(79,142,255,.05);color:var(--accent);font-size:.8rem;font-weight:600;cursor:pointer;margin-bottom:10px;font-family:DM Sans,sans-serif">
+    <button type="button" onclick="_cfAddBatchRow()" style="width:100%;padding:9px 14px;border-radius:9px;border:1px dashed rgba(34,197,94,.35);background:rgba(34,197,94,.05);color:var(--accent);font-size:.8rem;font-weight:600;cursor:pointer;margin-bottom:10px;font-family:DM Sans,sans-serif">
       + Ajouter une ligne
     </button>
 
@@ -1325,7 +1346,7 @@ function _cfAddBatchRow() {
   row.innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
       <span style="font-size:.65rem;color:var(--accent);font-family:Space Mono,monospace">DOCUMENT ${id}</span>
-      ${id > 1 ? `<button type="button" onclick="_cfRemoveBatchRow(${id})" style="background:rgba(255,107,74,.1);color:var(--accent2);border:none;cursor:pointer;padding:3px 8px;border-radius:5px;font-size:.7rem">✕</button>` : ''}
+      ${id > 1 ? `<button type="button" onclick="_cfRemoveBatchRow(${id})" style="background:rgba(255,122,92,.1);color:var(--accent2);border:none;cursor:pointer;padding:3px 8px;border-radius:5px;font-size:.7rem">✕</button>` : ''}
     </div>
     <input type="text" id="cfbn-${id}" placeholder="Nom du document"
       style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.8rem;outline:none;margin-bottom:6px">
@@ -1809,7 +1830,7 @@ function _showTypeScreen() {
   const exoCount = countExercices(data.exercices);
 
   document.getElementById('type-class-name').textContent = cls.name;
-  document.getElementById('type-class-sub').textContent  = cls.sub;
+  document.getElementById('type-class-sub').textContent  = data.sub || cls.sub;
   document.getElementById('count-cours').textContent     = (data.cours||[]).length + ' fichier' + ((data.cours||[]).length !== 1 ? 's' : '');
   document.getElementById('count-exercices').textContent = exoCount + ' fichier' + (exoCount !== 1 ? 's' : '');
   document.getElementById('count-qcm').textContent       = (data.qcm||[]).length + ' quiz';
@@ -1874,7 +1895,7 @@ function renderClassGrid(classes) {
       <div>
         <div class="card-level">${cls.cycle.toUpperCase()}</div>
         <div class="card-name">${cls.name}</div>
-        <div class="card-sub">${cls.sub}</div>
+        <div class="card-sub">${data.sub || cls.sub}</div>
         <div class="card-stats">
           <div class="stat-pill">${(data.cours||[]).length} cours</div>
           <div class="stat-pill">${exoCount} exo</div>
@@ -2203,7 +2224,7 @@ async function _showAdminPanel() {
     <div class="section-title">Classes</div>
     ${rows}
     <div style="margin-top:16px">
-      <button onclick="_showAdminContribs()" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(61,255,192,.25);background:rgba(61,255,192,.07);color:var(--accent3);font-weight:700;font-size:.85rem;cursor:pointer;font-family:Syne,sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">
+      <button onclick="_showAdminContribs()" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(45,217,185,.25);background:rgba(45,217,185,.07);color:var(--accent3);font-weight:700;font-size:.85rem;cursor:pointer;font-family:Syne,sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">
         🤝 Voir les contributions<span class="contrib-badge" id="admin-contrib-badge" style="display:none">0</span>
       </button>
     </div>
@@ -2274,6 +2295,11 @@ function _renderAdminEditor() {
         <p style="font-size:.72rem;color:var(--muted)">Gérer le contenu</p>
       </div>
     </div>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <input type="text" id="admin-sub-input" value="${(data.sub || cls.sub).replace(/"/g,'&quot;')}" placeholder="Sous-titre affiché sous le nom de la classe"
+        style="flex:1;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.8rem;outline:none">
+      <button onclick="_adminSaveSub()" style="padding:9px 14px;border-radius:9px;border:none;background:var(--accent);color:#fff;font-weight:700;font-size:.78rem;cursor:pointer;font-family:Syne,sans-serif;white-space:nowrap">✓ Enreg.</button>
+    </div>
     <div class="cycle-tabs" style="margin-bottom:14px;flex-wrap:wrap;gap:6px">${tabs}</div>
     ${body}`;
 
@@ -2287,6 +2313,18 @@ function _adminSetTab(key) {
   _renderAdminEditor();
 }
 
+async function _adminSaveSub() {
+  const input = document.getElementById('admin-sub-input');
+  if (!input) return;
+  const value = input.value.trim();
+  if (!value) { showToast('⚠️ Le sous-titre ne peut pas être vide'); return; }
+  if (!CONTENT[_adminClassId]) CONTENT[_adminClassId] = { cours:[], exercices:{}, corriges:[], qcm:[] };
+  CONTENT[_adminClassId].sub = value;
+  await saveContent();
+  renderClassGrid(CLASSES);
+  showToast('✅ Sous-titre mis à jour');
+}
+
 function _adminFilesSection(files) {
   const existing = files.length === 0
     ? `<div class="empty-state"><div class="empty-icon">📭</div><p>Aucun fichier</p></div>`
@@ -2294,7 +2332,7 @@ function _adminFilesSection(files) {
       <div class="file-item" style="margin-bottom:8px">
         <div class="file-icon pdf">📄</div>
         <div class="file-info"><h4>${f.name}</h4><p>${f.size}</p></div>
-        <button style="background:rgba(255,107,74,.12);color:var(--accent2);border:none;cursor:pointer;padding:7px 11px;border-radius:7px;font-size:.8rem" onclick="_adminDeleteFile(${i})">🗑</button>
+        <button style="background:rgba(255,122,92,.12);color:var(--accent2);border:none;cursor:pointer;padding:7px 11px;border-radius:7px;font-size:.8rem" onclick="_adminDeleteFile(${i})">🗑</button>
       </div>`).join('');
 
   return `
@@ -2305,7 +2343,7 @@ function _adminFilesSection(files) {
       </p>
       <button type="button" class="drive-btn" id="admin-drive-btn" onclick="_openDriveBrowser(_fillBatchFromDrive)">📁 Choisir plusieurs fichiers sur Google Drive</button>
       <div id="batch-list"></div>
-      <button onclick="_addBatchRow()" style="width:100%;padding:9px 14px;border-radius:9px;border:1px dashed rgba(79,142,255,.35);background:rgba(79,142,255,.05);color:var(--accent);font-size:.8rem;font-weight:600;cursor:pointer;margin-bottom:10px;font-family:DM Sans,sans-serif">
+      <button onclick="_addBatchRow()" style="width:100%;padding:9px 14px;border-radius:9px;border:1px dashed rgba(34,197,94,.35);background:rgba(34,197,94,.05);color:var(--accent);font-size:.8rem;font-weight:600;cursor:pointer;margin-bottom:10px;font-family:DM Sans,sans-serif">
         + Ajouter une ligne
       </button>
       <button class="qcm-submit" onclick="_adminSaveBatch()">✅ Enregistrer</button>
@@ -2333,7 +2371,7 @@ function _addBatchRow() {
   row.innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
       <span style="font-size:.65rem;color:var(--accent);font-family:Space Mono,monospace">FICHIER ${id}</span>
-      ${id > 1 ? `<button onclick="_removeBatchRow(${id})" style="background:rgba(255,107,74,.1);color:var(--accent2);border:none;cursor:pointer;padding:3px 8px;border-radius:5px;font-size:.7rem">✕</button>` : ''}
+      ${id > 1 ? `<button onclick="_removeBatchRow(${id})" style="background:rgba(255,122,92,.1);color:var(--accent2);border:none;cursor:pointer;padding:3px 8px;border-radius:5px;font-size:.7rem">✕</button>` : ''}
     </div>
     <input type="text" id="bn-${id}" placeholder="Nom du fichier"
       style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.8rem;outline:none;margin-bottom:6px">
@@ -2404,7 +2442,7 @@ function _adminQCMSection(data) {
     : qcms.map((q, i) => `
       <div class="admin-class-row" style="margin-bottom:8px">
         <div><span style="font-size:.85rem">${q.title}</span><p>${q.questions.length} question${q.questions.length>1?'s':''}</p></div>
-        <button style="background:rgba(255,107,74,.12);color:var(--accent2);border:none;cursor:pointer;padding:7px 11px;border-radius:7px;font-size:.8rem" onclick="_adminDeleteQCM(${i})">🗑</button>
+        <button style="background:rgba(255,122,92,.12);color:var(--accent2);border:none;cursor:pointer;padding:7px 11px;border-radius:7px;font-size:.8rem" onclick="_adminDeleteQCM(${i})">🗑</button>
       </div>`).join('');
 
   return `
