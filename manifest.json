@@ -1,6 +1,7 @@
 {
   "name": "InfoClasse — Cours & Exercices",
   "short_name": "InfoClasse",
+  "id": "/",
   "description": "Cours, exercices et documents d'informatique pour les élèves du Collège Saint Thomas de Manjo.",
   "start_url": "/index.html",
   "scope": "/",
@@ -27,6 +28,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Écran d'accueil InfoClasse"
+    },
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "InfoClasse sur ordinateur"
     }
   ]
 }
