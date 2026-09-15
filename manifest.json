@@ -1,3 +1,4 @@
+
 {
   "name": "InfoClasse — Cours & Exercices",
   "short_name": "InfoClasse",
@@ -32,18 +33,11 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/mobile-home.png",
-      "sizes": "1080x1920",
+      "src": "/screenshots/Mobile-home.png",
+      "sizes": "1080x2400",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Écran d'accueil InfoClasse"
-    },
-    {
-      "src": "/screenshots/desktop-home.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "InfoClasse sur ordinateur"
     }
   ]
 }
