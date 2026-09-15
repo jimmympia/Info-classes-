@@ -33,7 +33,7 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/Mobile-home.png",
+      "src": "/screenshots/mobile-home.png",
       "sizes": "1080x2400",
       "type": "image/png",
       "form_factor": "narrow",
